@@ -21,6 +21,8 @@ A comprehensive Python implementation for training Variational Autoencoders (VAE
 
 ## Installation
 
+### Linux / macOS
+
 1. Clone the repository:
 ```bash
 git clone <repository-url>
@@ -31,6 +33,49 @@ cd ae_training_marduk191
 ```bash
 pip install -r requirements.txt
 ```
+
+### Windows
+
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd ae_training_marduk191
+```
+
+2. **Automated Setup (Recommended)**:
+   - Double-click `setup_windows.bat` or run in Command Prompt:
+   ```cmd
+   setup_windows.bat
+   ```
+   - This will:
+     - Check Python installation
+     - Create a virtual environment (optional)
+     - Install PyTorch with CUDA support
+     - Install all dependencies
+     - Create necessary directories
+
+3. **Manual Setup**:
+   ```cmd
+   REM Install PyTorch with CUDA 11.8 (for NVIDIA GPU)
+   pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+
+   REM Or CPU-only version
+   pip install torch torchvision
+
+   REM Install other dependencies
+   pip install numpy pillow tqdm tensorboard albumentations
+   ```
+
+### Platform Compatibility Notes
+
+✅ **Fully Compatible**: All Python scripts work on Windows, Linux, and macOS
+- Uses `pathlib.Path()` for cross-platform path handling
+- All dependencies support Windows
+
+⚠️ **Windows-Specific**:
+- Use `train_example.bat` instead of `train_example.sh`
+- Use backslashes `\` or forward slashes `/` in paths (both work with pathlib)
+- Use Command Prompt, PowerShell, or Windows Terminal
 
 ## Quick Start
 
@@ -73,7 +118,7 @@ python prepare_data.py \
 
 ### 2. Train the VAE
 
-Basic training:
+**Linux/macOS** - Basic training:
 ```bash
 python train_vae.py \
   --data_path ./data/train \
@@ -81,6 +126,15 @@ python train_vae.py \
   --batch_size 4 \
   --num_epochs 100 \
   --mixed_precision
+```
+
+**Windows** - Use the provided batch file or run directly:
+```cmd
+REM Option 1: Use the example batch file
+train_example.bat
+
+REM Option 2: Run directly (remove line continuation backslashes)
+python train_vae.py --data_path ./data/train --output_dir ./outputs/my_vae --batch_size 4 --num_epochs 100 --mixed_precision
 ```
 
 Advanced training with custom parameters:
