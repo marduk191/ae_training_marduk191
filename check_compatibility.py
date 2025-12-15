@@ -96,9 +96,39 @@ def check_cuda():
 
             for i in range(device_count):
                 props = torch.cuda.get_device_properties(i)
-                print(f"\n   GPU {i}: {torch.cuda.get_device_name(i)}")
-                print(f"      Memory: {props.total_memory / 1e9:.2f} GB")
+                gpu_name = torch.cuda.get_device_name(i)
+                memory_gb = props.total_memory / 1e9
+
+                print(f"\n   GPU {i}: {gpu_name}")
+                print(f"      Memory: {memory_gb:.2f} GB")
                 print(f"      Compute Capability: {props.major}.{props.minor}")
+
+                # Detect RTX 5090 and provide specific recommendations
+                if "5090" in gpu_name or "RTX 5090" in gpu_name:
+                    print("\n   🚀 RTX 5090 Detected!")
+                    print("   ⭐ This is the ultimate GPU for VAE training!")
+                    print("   Recommendations:")
+                    print("      - Use CUDA 12.8 for best performance")
+                    if torch.version.cuda and "12.8" not in str(torch.version.cuda):
+                        print(f"      ⚠️  Current CUDA: {torch.version.cuda} (consider upgrading to 12.8)")
+                        print("         pip install torch>=2.5.0 torchvision>=0.20.0 --index-url https://download.pytorch.org/whl/cu128")
+                    else:
+                        print("      ✅ CUDA version is optimal")
+                    print("      - Train at 2048x2048 with batch_size=4")
+                    print("      - Or 1024x1024 with batch_size=16")
+                    print("      - See RTX5090_GUIDE.md for optimization tips")
+                    print("      - Quick start: ./train_rtx5090.sh (Linux) or train_rtx5090.bat (Windows)")
+
+                # Recommendations for other high-end GPUs
+                elif "4090" in gpu_name:
+                    print("   💪 RTX 4090 detected - Excellent for training!")
+                    print("      Recommended: 1024x1024 with batch_size=12")
+                elif "3090" in gpu_name or "A6000" in gpu_name:
+                    print("   👍 High VRAM GPU - Great for large models")
+                    print("      Recommended: 768x768 with batch_size=12")
+                elif memory_gb < 12:
+                    print("   ⚠️  Limited VRAM - Use smaller settings")
+                    print("      Recommended: 512x512 with batch_size=4")
 
             # Test CUDA operations
             print("\n   Testing CUDA operations...")

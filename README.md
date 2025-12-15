@@ -20,6 +20,35 @@ A comprehensive Python implementation for training Variational Autoencoders (VAE
 - 16GB+ VRAM for 512x512 images with batch size 4
 - PyTorch 2.1+ with CUDA support (or CPU version)
 
+### GPU Recommendations
+
+| GPU Model | VRAM | Max Resolution | Batch Size | Notes |
+|-----------|------|----------------|------------|-------|
+| RTX 3060  | 12GB | 512x512        | 4          | Entry level |
+| RTX 3080  | 10GB | 512x512        | 8          | Good for learning |
+| RTX 3090  | 24GB | 768x768        | 12         | Professional |
+| RTX 4080  | 16GB | 768x768        | 8          | Efficient |
+| RTX 4090  | 24GB | 1024x1024      | 12         | High-end |
+| **RTX 5090** | **32GB** | **2048x2048** | **16** | **⭐ Optimal** |
+
+### RTX 5090 Users: Ultra-High Resolution Training! 🚀
+
+If you have an **RTX 5090**, you can train at unprecedented resolutions:
+- **2048x2048** with batch size 4
+- **1024x1024** with batch size 16
+- CUDA 12.8 for maximum performance
+
+**Quick Start for RTX 5090:**
+```bash
+# Linux/macOS
+./train_rtx5090.sh
+
+# Windows
+train_rtx5090.bat
+```
+
+See [RTX5090_GUIDE.md](RTX5090_GUIDE.md) for complete optimization guide.
+
 ### Why Python 3.12+?
 - Improved performance and memory efficiency
 - Better type hints and error messages

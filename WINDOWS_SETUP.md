@@ -12,7 +12,9 @@
 
 2. **NVIDIA GPU (Optional but Recommended)**
    - Install latest GPU drivers from [nvidia.com](https://www.nvidia.com/Download/index.aspx)
+   - For RTX 5090: Use driver version 560.xx or later
    - CUDA will be installed automatically with PyTorch
+   - **RTX 5090 users**: Select CUDA 12.8 during setup for best performance
 
 3. **Git** (Optional) - Download from [git-scm.com](https://git-scm.com/download/win)
 

@@ -69,11 +69,14 @@ echo ========================================
 echo.
 echo Choose installation option:
 echo 1. CUDA 11.8 (NVIDIA GPU - Most Compatible)
-echo 2. CUDA 12.1 (NVIDIA GPU - Latest)
-echo 3. CUDA 12.4 (NVIDIA GPU - Newest, Python 3.12+ optimized)
-echo 4. CPU only (No GPU)
+echo 2. CUDA 12.1 (NVIDIA GPU)
+echo 3. CUDA 12.4 (NVIDIA GPU - Python 3.12+ optimized)
+echo 4. CUDA 12.8 (NVIDIA GPU - Latest, RTX 40/50 series optimized)
+echo 5. CPU only (No GPU)
 echo.
-set /p torch_option="Enter option (1-4): "
+echo Recommended for RTX 5090: Option 4 (CUDA 12.8)
+echo.
+set /p torch_option="Enter option (1-5): "
 
 if "%torch_option%"=="1" (
     echo Installing PyTorch with CUDA 11.8...
@@ -82,9 +85,13 @@ if "%torch_option%"=="1" (
     echo Installing PyTorch with CUDA 12.1...
     pip install torch>=2.1.0 torchvision>=0.16.0 --index-url https://download.pytorch.org/whl/cu121
 ) else if "%torch_option%"=="3" (
-    echo Installing PyTorch with CUDA 12.4 (Recommended for Python 3.12+)...
+    echo Installing PyTorch with CUDA 12.4...
     pip install torch>=2.1.0 torchvision>=0.16.0 --index-url https://download.pytorch.org/whl/cu124
 ) else if "%torch_option%"=="4" (
+    echo Installing PyTorch with CUDA 12.8 (Recommended for RTX 5090)...
+    echo This provides the best performance for latest NVIDIA GPUs
+    pip install torch>=2.5.0 torchvision>=0.20.0 --index-url https://download.pytorch.org/whl/cu128
+) else if "%torch_option%"=="5" (
     echo Installing PyTorch (CPU only)...
     pip install torch>=2.1.0 torchvision>=0.16.0
 ) else (
