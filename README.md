@@ -15,11 +15,31 @@ A comprehensive Python implementation for training Variational Autoencoders (VAE
 
 ## Requirements
 
-- Python 3.8+
-- CUDA-capable GPU (recommended)
+- **Python 3.12+** (Required for full compatibility)
+- CUDA-capable GPU (recommended for training)
 - 16GB+ VRAM for 512x512 images with batch size 4
+- PyTorch 2.1+ with CUDA support (or CPU version)
+
+### Why Python 3.12+?
+- Improved performance and memory efficiency
+- Better type hints and error messages
+- Enhanced f-string capabilities
+- All dependencies fully tested with Python 3.12+
+
+**Note**: Python 3.9-3.11 may work but are not officially supported or tested.
 
 ## Installation
+
+**First, verify your Python version and compatibility:**
+```bash
+python check_compatibility.py
+```
+
+This script will check:
+- Python version (3.12+ required)
+- All package installations
+- CUDA/GPU availability
+- Memory requirements estimation
 
 ### Linux / macOS
 

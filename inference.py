@@ -2,6 +2,8 @@
 """
 FLUX.1 VAE Inference Script
 Use trained VAE models for encoding and decoding images.
+
+Requires Python 3.12+
 """
 
 import argparse

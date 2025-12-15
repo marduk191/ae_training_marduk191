@@ -4,9 +4,11 @@
 
 ### Prerequisites
 
-1. **Python 3.8+** - Download from [python.org](https://www.python.org/downloads/)
+1. **Python 3.12+** - Download from [python.org](https://www.python.org/downloads/)
    - ✅ During installation, check "Add Python to PATH"
    - ✅ Enable "pip" installation
+   - ⚠️ Python 3.12 or higher is **required** for full compatibility
+   - 💡 Recommended: Python 3.12.x (latest stable)
 
 2. **NVIDIA GPU (Optional but Recommended)**
    - Install latest GPU drivers from [nvidia.com](https://www.nvidia.com/Download/index.aspx)
@@ -35,7 +37,17 @@
 python --version
 ```
 
-Should show Python 3.8 or higher.
+Should show Python 3.12 or higher.
+
+**Run the compatibility checker:**
+```cmd
+python check_compatibility.py
+```
+
+This will verify:
+- Python version is 3.12+
+- All required packages are installed
+- CUDA/GPU is properly configured
 
 ### Step 2: Create Virtual Environment (Recommended)
 

@@ -10,13 +10,30 @@ REM Check Python installation
 python --version >nul 2>&1
 if errorlevel 1 (
     echo ERROR: Python is not installed or not in PATH
-    echo Please install Python 3.8 or higher from https://www.python.org/
+    echo Please install Python 3.12 or higher from https://www.python.org/
     pause
     exit /b 1
 )
 
 echo [OK] Python is installed
 python --version
+echo.
+
+REM Check Python version (3.12+)
+python -c "import sys; exit(0 if sys.version_info >= (3, 12) else 1)" >nul 2>&1
+if errorlevel 1 (
+    echo WARNING: Python 3.12+ is required for full compatibility
+    python -c "import sys; print('Current version:', f'{sys.version_info.major}.{sys.version_info.minor}.{sys.version_info.micro}')"
+    echo Please upgrade to Python 3.12 or higher
+    echo Download from: https://www.python.org/downloads/
+    echo.
+    set /p continue="Continue anyway? (y/n): "
+    if /i not "%continue%"=="y" (
+        exit /b 1
+    )
+) else (
+    echo [OK] Python version is 3.12 or higher
+)
 echo.
 
 REM Check if CUDA is available
@@ -51,24 +68,28 @@ echo PyTorch Installation
 echo ========================================
 echo.
 echo Choose installation option:
-echo 1. CUDA 11.8 (NVIDIA GPU - Recommended)
+echo 1. CUDA 11.8 (NVIDIA GPU - Most Compatible)
 echo 2. CUDA 12.1 (NVIDIA GPU - Latest)
-echo 3. CPU only (No GPU)
+echo 3. CUDA 12.4 (NVIDIA GPU - Newest, Python 3.12+ optimized)
+echo 4. CPU only (No GPU)
 echo.
-set /p torch_option="Enter option (1-3): "
+set /p torch_option="Enter option (1-4): "
 
 if "%torch_option%"=="1" (
     echo Installing PyTorch with CUDA 11.8...
-    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+    pip install torch>=2.1.0 torchvision>=0.16.0 --index-url https://download.pytorch.org/whl/cu118
 ) else if "%torch_option%"=="2" (
     echo Installing PyTorch with CUDA 12.1...
-    pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+    pip install torch>=2.1.0 torchvision>=0.16.0 --index-url https://download.pytorch.org/whl/cu121
 ) else if "%torch_option%"=="3" (
+    echo Installing PyTorch with CUDA 12.4 (Recommended for Python 3.12+)...
+    pip install torch>=2.1.0 torchvision>=0.16.0 --index-url https://download.pytorch.org/whl/cu124
+) else if "%torch_option%"=="4" (
     echo Installing PyTorch (CPU only)...
-    pip install torch torchvision
+    pip install torch>=2.1.0 torchvision>=0.16.0
 ) else (
     echo Invalid option. Installing default PyTorch...
-    pip install torch torchvision
+    pip install torch>=2.1.0 torchvision>=0.16.0
 )
 echo.
 

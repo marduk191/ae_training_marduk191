@@ -2,6 +2,8 @@
 """
 Data Preparation Utilities for VAE Training
 Includes image preprocessing, dataset validation, and augmentation.
+
+Requires Python 3.12+
 """
 
 import argparse

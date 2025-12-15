@@ -2,6 +2,8 @@
 """
 Comprehensive FLUX.1 VAE Training Script
 Supports training variational autoencoders for image generation models.
+
+Requires Python 3.12+
 """
 
 import os
