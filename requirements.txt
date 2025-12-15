@@ -1,0 +1,27 @@
+# Core dependencies - Python 3.12+ compatible
+torch>=2.1.0
+torchvision>=0.16.0
+numpy>=1.26.0
+pillow>=10.0.0
+
+# Training utilities
+tqdm>=4.66.0
+tensorboard>=2.15.0
+
+# Data handling
+albumentations>=1.4.0
+
+# Optional: For additional functionality
+# Distributed training
+# accelerate>=0.25.0
+
+# Model optimization
+# bitsandbytes>=0.41.0  # Note: Limited Windows support
+
+# Development
+pytest>=8.0.0
+black>=24.0.0
+flake8>=7.0.0
+
+# Python version requirement
+# Requires: Python 3.12+
