@@ -1,8 +1,11 @@
 # Core dependencies - Python 3.12+ compatible
-torch>=2.1.0
-torchvision>=0.16.0
+torch>=2.1.0  # For CUDA 12.8 and RTX 5090: torch>=2.5.0 recommended
+torchvision>=0.16.0  # For CUDA 12.8 and RTX 5090: torchvision>=0.20.0 recommended
 numpy>=1.26.0
 pillow>=10.0.0
+
+# Note: For NVIDIA RTX 5090 with CUDA 12.8, install PyTorch with:
+# pip install torch>=2.5.0 torchvision>=0.20.0 --index-url https://download.pytorch.org/whl/cu128
 
 # Training utilities
 tqdm>=4.66.0

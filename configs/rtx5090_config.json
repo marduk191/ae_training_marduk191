@@ -1,0 +1,42 @@
+{
+  "_comment": "Optimized configuration for NVIDIA RTX 5090 (32GB VRAM)",
+  "_architecture": "Blackwell architecture with enhanced Tensor Cores",
+
+  "latent_dim": 16,
+  "channels": [128, 256, 512, 512],
+  "image_size": 1024,
+  "in_channels": 3,
+  "z_channels": 16,
+
+  "batch_size": 16,
+  "num_epochs": 100,
+  "learning_rate": 0.0001,
+  "weight_decay": 0.00001,
+  "warmup_epochs": 5,
+
+  "kl_weight": 0.000001,
+  "perceptual_weight": 1.0,
+  "reconstruction_weight": 1.0,
+
+  "data_path": "./data/train",
+  "num_workers": 8,
+  "mixed_precision": true,
+  "gradient_clip": 1.0,
+  "accumulation_steps": 1,
+
+  "output_dir": "./outputs/rtx5090_training",
+  "checkpoint_freq": 1,
+  "save_samples_freq": 100,
+  "val_split": 0.1,
+  "val_freq": 1,
+  "device": "cuda",
+
+  "_notes": [
+    "With 32GB VRAM, you can train at 1024x1024 resolution",
+    "Batch size of 16 for 1024x1024 images (~28GB VRAM usage)",
+    "For even higher res (1536x1536), use batch_size=8",
+    "For 2048x2048, use batch_size=4",
+    "num_workers=8 optimized for PCIe 5.0 bandwidth",
+    "CUDA 12.8 provides best performance for Blackwell architecture"
+  ]
+}
