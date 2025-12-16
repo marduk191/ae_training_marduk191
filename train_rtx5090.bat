@@ -79,6 +79,11 @@ python train_vae.py ^
   --kl_weight 1e-6 ^
   --perceptual_weight 1.0 ^
   --mixed_precision ^
+  --use_torch_compile ^
+  --use_bf16 ^
+  --enable_tf32 ^
+  --channels_last ^
+  --persistent_workers ^
   --gradient_clip 1.0 ^
   --num_workers %NUM_WORKERS% ^
   --checkpoint_freq 1 ^
