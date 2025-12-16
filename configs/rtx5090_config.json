@@ -24,6 +24,12 @@
   "gradient_clip": 1.0,
   "accumulation_steps": 1,
 
+  "use_torch_compile": true,
+  "use_bf16": true,
+  "enable_tf32": true,
+  "channels_last": true,
+  "persistent_workers": true,
+
   "output_dir": "./outputs/rtx5090_training",
   "checkpoint_freq": 1,
   "save_samples_freq": 100,
@@ -31,12 +37,22 @@
   "val_freq": 1,
   "device": "cuda",
 
+  "_optimizations": {
+    "torch_compile": "15-30% speedup on RTX 5090 with PyTorch 2.0+",
+    "bf16": "Better numerical stability than FP16, native on Blackwell",
+    "tf32": "Automatic acceleration for FP32 operations on Tensor Cores",
+    "channels_last": "Optimized memory layout for modern GPUs",
+    "persistent_workers": "Faster data loading with worker reuse"
+  },
+
   "_notes": [
     "With 32GB VRAM, you can train at 1024x1024 resolution",
     "Batch size of 16 for 1024x1024 images (~28GB VRAM usage)",
     "For even higher res (1536x1536), use batch_size=8",
     "For 2048x2048, use batch_size=4",
     "num_workers=8 optimized for PCIe 5.0 bandwidth",
-    "CUDA 12.8 provides best performance for Blackwell architecture"
+    "CUDA 12.8 provides best performance for Blackwell architecture",
+    "torch.compile adds 2-3 min startup time but significantly speeds up training",
+    "BF16 is recommended over FP16 on RTX 5090 for better stability"
   ]
 }
