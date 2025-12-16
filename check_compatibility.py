@@ -114,17 +114,10 @@ def check_cuda():
                         print("         pip install torch>=2.5.0 torchvision>=0.20.0 --index-url https://download.pytorch.org/whl/cu128")
                     else:
                         print("      ✅ CUDA version is optimal")
-                    print("\n   Standard VAE:")
                     print("      - Train at 2048x2048 with batch_size=4")
                     print("      - Or 1024x1024 with batch_size=16")
+                    print("      - See RTX5090_GUIDE.md for optimization tips")
                     print("      - Quick start: ./train_rtx5090.sh (Linux) or train_rtx5090.bat (Windows)")
-                    print("\n   ⚡ Z-Image Turbo (3x faster):")
-                    print("      - Train at 1024x1024 with batch_size=24")
-                    print("      - Or 768x768 with batch_size=32 for maximum speed")
-                    print("      - Quick start: ./train_zimage_turbo.sh (Linux) or train_zimage_turbo.bat (Windows)")
-                    print("\n   📚 Guides:")
-                    print("      - Standard VAE: RTX5090_GUIDE.md")
-                    print("      - Z-Image Turbo: ZIMAGE_TURBO_GUIDE.md")
 
                 # Recommendations for other high-end GPUs
                 elif "4090" in gpu_name:

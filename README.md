@@ -49,35 +49,6 @@ train_rtx5090.bat
 
 See [RTX5090_GUIDE.md](RTX5090_GUIDE.md) for complete optimization guide.
 
-### Z-Image Turbo: Speed-Optimized VAE ⚡
-
-**NEW!** Train VAE models **3x faster** with Z-Image Turbo - optimized for real-time applications:
-
-| Feature | Standard VAE | Z-Image Turbo | Speedup |
-|---------|-------------|---------------|---------|
-| Training Speed | 1.2s/batch | 0.45s/batch | 2.7x |
-| Inference Speed | 45ms | 15ms | 3x |
-| Model Size | 450MB | 290MB | 1.55x |
-| Quality | 100% | 92-95% | - |
-
-**Quick Start for Z-Image Turbo (RTX 5090):**
-```bash
-# Linux/macOS
-./train_zimage_turbo.sh
-
-# Windows
-train_zimage_turbo.bat
-```
-
-**Perfect for:**
-- Real-time applications (30-60fps)
-- Production deployments
-- Rapid prototyping
-- High-throughput pipelines
-- Interactive tools
-
-See [ZIMAGE_TURBO_GUIDE.md](ZIMAGE_TURBO_GUIDE.md) for complete details.
-
 ### Why Python 3.12+?
 - Improved performance and memory efficiency
 - Better type hints and error messages
